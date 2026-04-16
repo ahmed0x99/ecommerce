@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar({isLogin}) {
   return (
   <div>
   <header className="bg-white">
@@ -41,29 +41,31 @@ export default function Navbar() {
         </div>
             <div class="flex justify-center space-x-5">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+            <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" alt='' />
         </a>
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+            <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" alt=''/>
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+            <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" alt='' />
         </a>
         <a href="https://messenger.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" />
+            <img src="https://img.icons8.com/fluent/30/000000/facebook-messenger--v2.png" alt='' />
         </a>
         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://img.icons8.com/fluent/30/000000/twitter.png" />
+            <img src="https://img.icons8.com/fluent/30/000000/twitter.png" alt='' />
         </a>
     </div>
 
-        <div className="flex items-center gap-4">
+{
+  !isLogin ?   <div className="flex items-center gap-4">
+
           <div className="sm:flex sm:gap-4">
-            <Link className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm" to="#">
+            <Link to="/login" className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow-sm" to="#">
               Login
             </Link>
             <div className="hidden sm:flex">
-              <Link className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" to="#">
+              <Link to="/register" className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600" to="#">
                 Register
               </Link>
             </div>
@@ -75,7 +77,9 @@ export default function Navbar() {
               </svg>
             </button>
           </div>
-        </div>
+        </div>: <Link to={"/logout"}>Logout</Link>
+}
+      
       </div>
     </div>
   </header>
